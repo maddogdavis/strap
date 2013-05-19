@@ -14,5 +14,5 @@ repos=`ls ${git_work}`
 for i in ${repos}
 do
   cd ${git_work}/${i}
-  [ -d ".git" ] && echo git pull
+  [ -d ".git" ] && git pull
 done
