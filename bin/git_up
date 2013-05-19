@@ -1,0 +1,18 @@
+#!/bin/sh -euf
+
+# Git update
+
+. _inc
+
+check_args $# 0 ""
+
+git_work="${HOME}/work"
+
+check_file d y ${git_work}
+
+repos=`ls ${git_work}`
+for i in ${repos}
+do
+  cd ${git_work}/${i}
+  [ -d ".git" ] && echo git pull
+done

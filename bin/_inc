@@ -1,0 +1,5 @@
+#!/bin/sh
+
+. _fail
+. _file
+. _msg
