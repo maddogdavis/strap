@@ -25,6 +25,8 @@ do
   git_clone ${url} ${reload}
 done
 
+mkdir "${rescue}"
+
 set +f
 
 echo "moving ${work} entries to ${rescue}..."
