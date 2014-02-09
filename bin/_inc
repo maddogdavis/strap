@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash -euf
 
 . _fail
 . _file
