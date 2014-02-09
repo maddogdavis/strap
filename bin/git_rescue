@@ -1,6 +1,6 @@
 #!/bin/bash -euf
 
-. _inc
+. _strap_inc
 
 check_args $# 0 "no-args"
 
