@@ -19,7 +19,7 @@ check_file d n ${git_reload}
 mkdir "${git_reload}"
 
 git_repo_url ${work}/cdx-registry && url=${__}
-git clone ${url} ${git_reload}
+git_clone ${url} ${git_reload}
 
 echo "............${url}"
 exit 1
