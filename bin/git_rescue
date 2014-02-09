@@ -1,0 +1,31 @@
+#!/bin/bash -euf
+
+. _inc
+
+check_args $# 0 "no-args"
+
+work="${HOME}/work"
+tmp="${HOME}/tmp"
+
+date=`date '+%Y%m%d_%H%M'`
+git_rescue="${tmp}/git_rescue_${date}"
+git_reload="${git_rescue}_"
+
+check_file d y ${work}
+check_file d y ${tmp}
+check_file d n ${git_rescue}
+check_file d n ${git_reload}
+
+mkdir "${git_reload}"
+
+git_repo_url ${work}/cdx-registry
+
+echo "............${__}"
+exit 1
+
+
+id=$1
+script="/var/log/script/script_${id}"
+
+check_file f y ${script}
+tail -f ${script}
