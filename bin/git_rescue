@@ -8,30 +8,31 @@ work="${HOME}/work"
 tmp="${HOME}/tmp"
 
 date=`date '+%Y%m%d_%H%M'`
-git_rescue="${tmp}/git_rescue_${date}"
-git_reload="${tmp}/git_reload_${date}"
+rescue="${tmp}/git_rescue_${date}"
+reload="${tmp}/git_reload_${date}"
 
 check_file d y ${work}
 check_file d y ${tmp}
-check_file d n ${git_rescue}
-check_file d n ${git_reload}
+check_file d n ${rescue}
+check_file d n ${reload}
 
-mkdir "${git_reload}"
-echo "attempting reload into ${git_reload}..."
+mkdir "${reload}"
+echo "attempting reload into ${reload}..."
 
 for i in `ls ${work}`
 do
   git_repo_url ${work}/${i} && url=${__}
-  git_clone ${url} ${git_reload}
+  git_clone ${url} ${reload}
 done
 
-echo "WHOA!!!"
-exit 1
+set +f
 
+echo "moving ${work} entries to ${rescue}..."
+mv ${work}/* ${rescue}
 
+echo "moving reloaded entries ${git_reload} to ${work}..."
+mv ${reload}/* ${work}
 
-id=$1
-script="/var/log/script/script_${id}"
+set -f
 
-check_file f y ${script}
-tail -f ${script}
+echo "git rescue complete"
