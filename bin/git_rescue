@@ -17,6 +17,7 @@ check_file d n ${git_rescue}
 check_file d n ${git_reload}
 
 mkdir "${git_reload}"
+echo "attempting reload into ${git_reload}..."
 
 for i in `ls ${work}`
 do
