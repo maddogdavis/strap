@@ -32,7 +32,7 @@ set +f
 echo "moving ${work} entries to ${rescue}..."
 mv ${work}/* ${rescue}
 
-echo "moving reloaded entries ${git_reload} to ${work}..."
+echo "moving reloaded entries ${reload} to ${work}..."
 mv ${reload}/* ${work}
 
 set -f
