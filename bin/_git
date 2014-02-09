@@ -1,0 +1,18 @@
+#!/bin/bash -euf
+
+git_repo_url() {
+    local loc=$1
+
+    local config="${loc}/.git/config"
+
+    check_file d y ${loc}
+    check_file f y ${config}
+
+    local url=`cat ${config} \
+      | grep -A 2 'remote "origin"' \
+      | grep url \
+      | sed 's/.* git/git/' \
+      | cat`
+
+    __=${url}
+}
