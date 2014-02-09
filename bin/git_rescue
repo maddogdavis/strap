@@ -18,11 +18,15 @@ check_file d n ${git_reload}
 
 mkdir "${git_reload}"
 
-git_repo_url ${work}/cdx-registry && url=${__}
-git_clone ${url} ${git_reload}
+for i in `ls ${work}`
+do
+  git_repo_url ${work}/${i} && url=${__}
+  git_clone ${url} ${git_reload}
+done
 
-echo "............${url}"
+echo "WHOA!!!"
 exit 1
+
 
 
 id=$1
