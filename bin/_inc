@@ -3,3 +3,4 @@
 . _fail
 . _file
 . _msg
+. _git
