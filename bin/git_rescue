@@ -9,7 +9,7 @@ tmp="${HOME}/tmp"
 
 date=`date '+%Y%m%d_%H%M'`
 git_rescue="${tmp}/git_rescue_${date}"
-git_reload="${git_rescue}_"
+git_reload="${tmp}/git_reload_${date}"
 
 check_file d y ${work}
 check_file d y ${tmp}
