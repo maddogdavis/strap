@@ -18,9 +18,10 @@ check_file d n ${git_reload}
 
 mkdir "${git_reload}"
 
-git_repo_url ${work}/cdx-registry
+git_repo_url ${work}/cdx-registry && url=${__}
+git clone ${url} ${git_reload}
 
-echo "............${__}"
+echo "............${url}"
 exit 1
 
 

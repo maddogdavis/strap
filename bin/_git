@@ -16,3 +16,15 @@ git_repo_url() {
 
     __=${url}
 }
+
+# TODO: dupe with dns-frondle
+git_clone() {
+    local repo=$1
+    local dst=$2
+
+    check_file d n ${dst}
+    mkdir ${dst}
+    cd ${dst}
+    echo "cloning ${repo}..."
+    git clone -q ${repo}
+}
