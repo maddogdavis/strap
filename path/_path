@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dir=`dirname $0`
+tools=`cd ${dir}/..; pwd`
+
+packages="core bin"
+
+__="_"
+for i in ${packages}
+do
+    __=${__}:${tools}/${i}
+done
+__=`echo ${__} | cut -c3-`
+
+echo ${__}
