@@ -1,0 +1,5 @@
+#!/bin/bash -euf
+
+. _strap__fail
+. _strap__file
+. _strap__git

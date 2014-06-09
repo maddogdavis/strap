@@ -1,0 +1,22 @@
+#!/bin/bash
+
+msg_ok() {
+    msg 2 "OK" $*
+}
+
+msg_fail() {
+    msg 1 "FAIL" $*
+}
+
+
+msg() {
+           local clr=$(tput setaf $1)
+    shift; local note=$1
+    shift; local msg=$*
+
+    local reset=$(tput sgr0)
+    let cols=$(tput cols)-${#msg}
+    echo -n ${msg}
+    printf "%${cols}s"  "[ ${clr}${note}${reset} ]"
+    echo
+}

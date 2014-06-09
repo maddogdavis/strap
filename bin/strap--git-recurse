@@ -1,0 +1,20 @@
+#!/bin/bash -euf
+
+# apply git operation to all repositories in directory
+
+. _strap__inc
+
+check_args $# 2 "<dir> <op>"
+loc=$1
+op=$2
+
+check_file d y ${loc}
+
+git__tree_repos ${loc}
+for i in ${__}
+do
+  (
+    cd ${loc}
+    cd ${i} && git "${op}"
+  )
+done

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+git__get_repo_loc() {
+    local loc=$1
+
+    local config="${loc}/.git/config"
+
+    check_file d y ${loc}
+    check_file f y ${config}
+
+    local url=`cat ${config} \
+      | grep -A 2 'remote "origin"' \
+      | grep url \
+      | sed 's/.* git/git/' \
+      | cat`
+
+    __=${url}
+}
+
+git__tree_repos() {
+  local loc=$1
+
+  check_file d y ${loc}
+
+  __=$(
+    cd ${loc}
+    find . -name ".git" | cut -c 3- | rev | cut -c 6- | rev
+  )
+}
+
+git__clone() {
+    local repo=$1
+    local dst=$2
+
+    check_file d y ${dst}
+
+    (
+      cd ${dst}
+      echo "cloning ${repo}..."
+      git clone ${repo} -q
+    )
+}
