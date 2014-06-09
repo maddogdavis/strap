@@ -26,7 +26,8 @@ for i in ${__}
 do
   git__get_repo_loc ${src}/${i} && url=${__}
   target=${load}/${i}
-  git__clone ${url} ${load}/${i}
+  mkdir -p ${target}
+  git__clone ${url} ${target}
 done
 
 mkdir "${rescue}"
