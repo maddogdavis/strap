@@ -35,5 +35,5 @@ git__clone() {
     check_file d y ${dst}
 
     echo "cloning ${repo}..."
-    git clone ${repo} -q ${dst}
+    git clone ${repo} ${dst} -q
 }
