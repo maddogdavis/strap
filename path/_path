@@ -3,7 +3,7 @@
 dir=`dirname $0`
 tools=`cd ${dir}/..; pwd`
 
-packages="core bin"
+packages="inc core bin"
 
 __="_"
 for i in ${packages}
