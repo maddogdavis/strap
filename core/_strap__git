@@ -17,6 +17,24 @@ git__get_repo_url() {
     __=${url}
 }
 
+git__get_repo_loc_from_url() {
+    local base=$1
+    local url=$2
+
+    git__tree_repos ${base}
+
+    local locs=${__}
+    local r="////"
+   
+    for i in ${locs}
+    do
+      get__get_repo_url ${i}
+      [ "${url}" = "${__}" ] && r=${i}
+    done
+
+    [ "${r}" = "////" ] || fail "no git repo under ${base} matches url ${url}"
+}
+
 git__tree_repos() {
   local loc=$1
 
