@@ -39,7 +39,7 @@ git__get_repo_loc() {
 
     [[ "${r}" = "////" ]] && fail "no git repo under ${base} matches url ${url}"
 
-    __=${r}
+    __=` readlink -f ${r}`
 }
 
 git__tree_repos() {
