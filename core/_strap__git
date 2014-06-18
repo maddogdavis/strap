@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git__get_repo_loc() {
+git__get_repo_url() {
     local loc=$1
 
     local config="${loc}/.git/config"

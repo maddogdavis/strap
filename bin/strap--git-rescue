@@ -24,7 +24,7 @@ strap--git-recurse ${src} "status"
 git__tree_repos ${src}
 for i in ${__}
 do
-  git__get_repo_loc ${src}/${i} && url=${__}
+  git__get_repo_url ${src}/${i} && url=${__}
   target=${load}/${i}
   mkdir -p ${target}
   git__clone ${url} ${target}
