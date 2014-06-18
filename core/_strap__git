@@ -23,23 +23,22 @@ git__get_repo_loc() {
 
     check_file d y ${base}
 
-    (
-      cd ${base}
-      git__tree_repos ${base}
-      local locs=${__}
-      local r="////"
-   
-      for i in ${locs}
-      do
-        git__get_repo_url ${i}
-        echo "----- ${i} ${__}"
-        [[ "${url}" = "${__}" ]] && local r=${i}
-        echo "R=${r}"
-      done
+    > /dev/null pushd ${base}
 
-      [[ "${r}" = "////" ]] && fail "no git repo under ${base} matches url ${url}"
-    )
-    echo "HO"
+    git__tree_repos ${base}
+    local locs=${__}
+    local r="////"
+ 
+    for i in ${locs}
+    do
+      git__get_repo_url ${i}
+      echo "----- ${i} ${__}"
+      [[ "${url}" = "${__}" ]] && local r=${i}
+      echo "R=${r}"
+    done
+
+    [[ "${r}" = "////" ]] && fail "no git repo under ${base} matches url ${url}"
+
     __=${r}
 }
 
