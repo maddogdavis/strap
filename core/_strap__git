@@ -17,7 +17,7 @@ git__get_repo_url() {
     __=${url}
 }
 
-git__get_repo_loc_from_url() {
+git__get_repo_loc() {
     local base=$1
     local url=$2
 
