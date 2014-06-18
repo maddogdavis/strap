@@ -33,7 +33,8 @@ git__get_repo_loc() {
       do
         git__get_repo_url ${i}
         echo "----- ${i} ${__}"
-        [[ "${url}" = "${__}" ]] && r=${i}
+        [[ "${url}" = "${__}" ]] && local r=${i}
+        echo "R=${r}"
       done
 
       [[ "${r}" = "////" ]] || fail "no git repo under ${base} matches url ${url}"
