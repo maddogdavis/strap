@@ -21,18 +21,23 @@ git__get_repo_loc() {
     local base=$1
     local url=$2
 
-    git__tree_repos ${base}
+    check_file d y ${base}
 
-    local locs=${__}
-    local r="////"
+    (
+      cd ${base}
+      git__tree_repos ${base}
+      local locs=${__}
+      local r="////"
    
-    for i in ${locs}
-    do
-      git__get_repo_url ${i}
-      [ "${url}" = "${__}" ] && r=${i}
-    done
+      for i in ${locs}
+      do
+        git__get_repo_url ${i}
+        [ "${url}" = "${__}" ] && r=${i}
+      done
 
-    [ "${r}" = "////" ] || fail "no git repo under ${base} matches url ${url}"
+      [ "${r}" = "////" ] || fail "no git repo under ${base} matches url ${url}"
+    )
+    __=${r}
 }
 
 git__tree_repos() {
