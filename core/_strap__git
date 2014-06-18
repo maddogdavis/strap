@@ -18,10 +18,6 @@ git__get_repo_url() {
 }
 
 git__get_repo_loc() {
-    echo "1... $1"
-    echo "2... $2"
-
-
     local base=$1
     local url=$2
 
