@@ -32,9 +32,7 @@ git__get_repo_loc() {
     for i in ${locs}
     do
       git__get_repo_url ${i}
-      echo "----- ${i} ${__}"
       [[ "${url}" = "${__}" ]] && local r=${i}
-      echo "R=${r}"
     done
 
     [[ "${r}" = "////" ]] && fail "no git repo under ${base} matches url ${url}"
