@@ -39,6 +39,7 @@ git__get_repo_loc() {
 
       [[ "${r}" = "////" ]] && fail "no git repo under ${base} matches url ${url}"
     )
+    echo "HO"
     __=${r}
 }
 
