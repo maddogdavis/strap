@@ -16,5 +16,6 @@ do
   (
     cd ${loc}
     cd ${i} && git "${op}"
-  )
+  ) &
 done
+wait
